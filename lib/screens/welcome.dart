@@ -33,7 +33,7 @@ class WelcomePage extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             const Text(
-              'Welcome to my Flutter App!',
+              'Welcome to my Profile App',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
 
