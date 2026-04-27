@@ -10,7 +10,8 @@ class ProfilePage extends StatefulWidget {
   State<ProfilePage> createState() => _ProfilePage();
 }
 
-const _osuURL = 'https://go.okstate.edu/go-pokes/images/mobile-images/apple-watch-42-mm/apple-watch-42-9.jpg';
+const _osuURL =
+    'https://go.okstate.edu/go-pokes/images/mobile-images/apple-watch-42-mm/apple-watch-42-9.jpg';
 
 class _ProfilePage extends State<ProfilePage> {
   static const NetworkImage _profileImage = NetworkImage(_osuURL);
@@ -18,7 +19,7 @@ class _ProfilePage extends State<ProfilePage> {
   var editing = true;
   var name = "Reese Roberts";
   var title = "Flutter Developer | CS Student";
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,9 +32,7 @@ class _ProfilePage extends State<ProfilePage> {
                 editing = !editing;
               });
             },
-            icon: Icon(
-              editing ? Icons.save : Icons.edit,
-            ),
+            icon: Icon(editing ? Icons.save : Icons.edit),
           ),
         ],
       ),
@@ -50,42 +49,48 @@ class _ProfilePage extends State<ProfilePage> {
 
             // Name and title
             const SizedBox(height: 12),
-            
+
             SizedBox(
               width: 300,
-              child: editing ? TextField(
-                textAlign: .center,
-                controller: TextEditingController(text: name),
-                onSubmitted: (newValue) {
-                  setState(() {
-                    name = newValue;
-                  });
-                },
-              ) : Text(
-                name,
-                textAlign: .center,
-                style: TextStyle(fontSize: 26, fontWeight: .bold),
-              )
+              child: editing
+                  ? TextField(
+                      textAlign: .center,
+                      controller: TextEditingController(text: name),
+                      onSubmitted: (newValue) {
+                        setState(() {
+                          name = newValue;
+                        });
+                      },
+                    )
+                  : Text(
+                      name,
+                      textAlign: .center,
+                      style: TextStyle(fontSize: 26, fontWeight: .bold),
+                    ),
             ),
 
             SizedBox(
               width: 300,
-              child: editing ? TextField(
-                textAlign: .center,
-                controller: TextEditingController(text: title),
-                onSubmitted: (newValue) {
-                  setState(() {
-                    title = newValue;
-                  });
-                },
-              ) : Text(
-                title,
-                textAlign: .center,
-                style: TextStyle(fontSize: 16, color: Colors.grey.shade800),
-              )
+              child: editing
+                  ? TextField(
+                      textAlign: .center,
+                      controller: TextEditingController(text: title),
+                      onSubmitted: (newValue) {
+                        setState(() {
+                          title = newValue;
+                        });
+                      },
+                    )
+                  : Text(
+                      title,
+                      textAlign: .center,
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.grey.shade800,
+                      ),
+                    ),
             ),
 
-            
             // Text(
             //   'Flutter Developer | CS Student',
             //   style: TextStyle(fontSize: 16, color: Colors.grey.shade600),
@@ -99,11 +104,15 @@ class _ProfilePage extends State<ProfilePage> {
                 ElevatedButton(
                   onPressed: () {
                     Route route = Platform.isIOS
-                        ? CupertinoPageRoute(builder: (_) => ContactPage(name: name))
-                        : MaterialPageRoute(builder: (_) => ContactPage(name: name));
+                        ? CupertinoPageRoute(
+                            builder: (_) => ContactPage(name: name),
+                          )
+                        : MaterialPageRoute(
+                            builder: (_) => ContactPage(name: name),
+                          );
                     Navigator.push(context, route);
-                  }, 
-                  child: const Text("Contact Info")
+                  },
+                  child: const Text("Contact Info"),
                 ),
 
                 const SizedBox(width: 12),
@@ -113,9 +122,9 @@ class _ProfilePage extends State<ProfilePage> {
                     Navigator.pop(context);
                   },
                   child: const Text('Go Back'),
-                )
+                ),
               ],
-            )
+            ),
           ],
         ),
       ),
@@ -125,7 +134,7 @@ class _ProfilePage extends State<ProfilePage> {
 
 class ContactPage extends StatelessWidget {
   const ContactPage({super.key, required this.name});
-  
+
   final String name;
 
   static const contactText = TextStyle(fontSize: 18);
@@ -133,9 +142,7 @@ class ContactPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Contact Info'),
-      ),
+      appBar: AppBar(title: const Text('Contact Info')),
       body: Center(
         child: Column(
           mainAxisAlignment: .center,
@@ -157,7 +164,7 @@ class ContactPage extends StatelessWidget {
             const Text("email: example@site.test", style: contactText),
             const Text("phone: (123) 456-7890", style: contactText),
           ],
-        )
+        ),
       ),
     );
   }

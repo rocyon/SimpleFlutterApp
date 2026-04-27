@@ -9,7 +9,9 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initLocalStorage();
 
-  isDarkMode = ValueNotifier(bool.parse(localStorage.getItem("isDarkMode") ?? "false"));
+  isDarkMode = ValueNotifier(
+    bool.parse(localStorage.getItem("isDarkMode") ?? "false"),
+  );
   isDarkMode.addListener(() {
     localStorage.setItem("isDarkMode", isDarkMode.value.toString());
   });
